@@ -8,12 +8,12 @@ public class PersoonViewer {
 
     private boolean aantalKinderenTonen;
 
+    public PersoonViewer(boolean aantalKinderenTonen) {
+	this.aantalKinderenTonen = aantalKinderenTonen;
+    }
+    
     public boolean isAantalKinderenTonen() {
 	return aantalKinderenTonen;
-    }
-
-    public void setAantalKinderenTonen(boolean aantalKinderenTonen) {
-	this.aantalKinderenTonen = aantalKinderenTonen;
     }
 
     public void afbeelden(List<Persoon> list) {
@@ -22,7 +22,7 @@ public class PersoonViewer {
 		    persoon.getPersoonNr()
 		    + "; " + persoon.getVoornaam()
 		    + "; " + persoon.getFamilienaam()
-		    + "; " + (isAantalKinderenTonen() ? persoon.getAantalKinderen() : ""));
+		    + (isAantalKinderenTonen() ? "; " + persoon.getAantalKinderen() : ""));
 	}
     }
 
