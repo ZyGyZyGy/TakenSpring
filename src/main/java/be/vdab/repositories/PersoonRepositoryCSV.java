@@ -1,7 +1,6 @@
 package be.vdab.repositories;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,10 +34,9 @@ public class PersoonRepositoryCSV implements PersoonRepository {
     public List<Persoon> findAll() {
 	List<Persoon> personen = new ArrayList<>();
 	String line = "";
-	String scvSplitBy = ","; 
 	try (BufferedReader br = new BufferedReader(new FileReader(bestandsPad))) {
 	    while ((line = br.readLine()) != null) {
-		String[] arrPersoon = line.split(scvSplitBy);
+		String[] arrPersoon = line.split(",");
 		personen.add(new Persoon(
 			Integer.parseInt(arrPersoon[0]),
 			arrPersoon[1],
@@ -55,9 +53,8 @@ public class PersoonRepositoryCSV implements PersoonRepository {
 //    public List<Persoon> findAll() {
 //	Path path = Paths.get(bestandsPad);
 //	List<Persoon> personen = new ArrayList<>();
-//	String scvSplitBy = ","; 
 //	try (Stream<String> stream = Files.lines(path)) {
-//	    stream.map(regel -> regel.split(scvSplitBy))
+//	    stream.map(regel -> regel.split(","))
 //	    .forEach(arrPersoonGegevens -> {
 //	    	Persoon persoon = new Persoon(
 //	    		Integer.parseInt(arrPersoonGegevens[0]), 

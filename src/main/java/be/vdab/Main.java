@@ -1,19 +1,26 @@
 package be.vdab;
 
+import java.io.IOException;
+
+import org.springframework.beans.BeansException;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import be.vdab.repositories.PersoonRepositoryCSV;
+import be.vdab.presentation.PersoonViewer;
 
 public class Main {
 
     public static void main(String[] args) {
 
-	try (ClassPathXmlApplicationContext context =
+	try (ClassPathXmlApplicationContext context = 
 		new ClassPathXmlApplicationContext("container.xml")) {
-	    context.getBean(PersoonRepositoryCSV.class).findAll()
-		    .forEach(persoon -> System.out.println(persoon.toString()));
+	    try {
+		context.getBean(PersoonViewer.class).afbeelden();
+	    } catch (BeansException e) {
+		e.printStackTrace();
+	    } catch (IOException e) {
+		e.printStackTrace();
+	    }
 	}
     }
 
 }
-

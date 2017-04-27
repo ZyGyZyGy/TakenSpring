@@ -3,16 +3,20 @@
 	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
 	xsi:schemaLocation='http://www.springframework.org/schema/beans 
 					 http://www.springframework.org/schema/beans/spring-beans.xsd'>
-	<bean id='persoonViewer' class='be.vdab.presentation.PersoonViewer' >
-		<constructor-arg>
-			<list>
-				<value>VOORNAAM</value>
-				<value>FAMILIENAAM</value>
-				<value>AANTAL_KINDEREN</value>
-			</list>
-		</constructor-arg>
-	</bean>
+					 
 	<bean id="persoonRepositoryCSV" class="be.vdab.repositories.PersoonRepositoryCSV">
-		<constructor-arg value="D:/1_INFORMATICA/VDAB/Spring/TakenMateriaal/Personen.txt"/>
+		<constructor-arg
+			value="D:/1_INFORMATICA/VDAB/Spring/TakenMateriaal/Personen.txt" />
 	</bean>
+	<bean id="persoonRepositoryMeerdereRegels" class="be.vdab.repositories.PersoonRepositoryMeerdereRegels">
+		<constructor-arg
+			value="D:/1_INFORMATICA/VDAB/Spring/TakenMateriaal/PersonenMeerdereRegels.txt" />
+	</bean>
+	<bean id="persoonServiceImpl" class="be.vdab.services.PersoonServiceImpl">
+		<constructor-arg ref="persoonRepositoryMeerdereRegels" />
+	</bean>
+	<bean id="persoonViewer" class="be.vdab.presentation.PersoonViewer">
+		<constructor-arg ref="persoonServiceImpl" />
+	</bean>
+	
 </beans>
