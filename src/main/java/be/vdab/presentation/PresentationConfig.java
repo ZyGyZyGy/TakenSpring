@@ -1,8 +1,16 @@
 package be.vdab.presentation;
 
-import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-@ImportResource("classpath:presentation.xml")
+import be.vdab.services.PersoonService;
+
+@Configuration
 public class PresentationConfig {
 
+    @Bean
+    PersoonViewer persoonViewer(PersoonService persoonService) {
+	return new PersoonViewer(persoonService);
+    }
+    
 }

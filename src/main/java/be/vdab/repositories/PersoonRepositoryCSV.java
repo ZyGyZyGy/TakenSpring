@@ -6,19 +6,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Repository;
-
 import be.vdab.entities.Persoon;
 
-@Repository
-@Qualifier("CSV")
-public class PersoonRepositoryCSV implements PersoonRepository {
+class PersoonRepositoryCSV implements PersoonRepository {
 
     private final String bestandsPad;
 
-    public PersoonRepositoryCSV(@Value("${persoonCSV}") String bestandsPad) {
+    PersoonRepositoryCSV(String bestandsPad) {
 	this.bestandsPad = bestandsPad;
     }
 

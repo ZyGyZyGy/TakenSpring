@@ -9,19 +9,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Repository;
-
 import be.vdab.entities.Persoon;
 
-@Repository
-@Qualifier("TXT")
-public class PersoonRepositoryMeerdereRegels implements PersoonRepository {
+
+class PersoonRepositoryMeerdereRegels implements PersoonRepository {
 
     private final String bestandsPad;
     
-    public PersoonRepositoryMeerdereRegels(@Value("${persoonTXT}") String bestandsPad) {
+    PersoonRepositoryMeerdereRegels(String bestandsPad) {
 	this.bestandsPad = bestandsPad;
     }
     
