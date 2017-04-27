@@ -12,4 +12,7 @@
 			</list>
 		</constructor-arg>
 	</bean>
+	<bean id="persoonRepositoryCSV" class="be.vdab.repositories.PersoonRepositoryCSV">
+		<constructor-arg value="D:/1_INFORMATICA/VDAB/Spring/TakenMateriaal/Personen.txt"/>
+	</bean>
 </beans>
